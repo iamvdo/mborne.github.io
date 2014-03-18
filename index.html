@@ -55,12 +55,34 @@ $(document).ready(function(){
 	) ;
 	ortho.addTo(map);
 	
+	var scanExpress = L.tileLayer(
+		getGeoportalURL("GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD"), 
+		{
+			minZoom: 6,
+			maxZoom: 19
+		}		
+	);
+	scanExpress.addTo(map);
+
+	var cassini = L.tileLayer(
+		getGeoportalURL("GEOGRAPHICALGRIDSYSTEMS.CASSINI"), 
+		{
+			minZoom: 6,
+			maxZoom: 19
+		}		
+	);
+	cassini.addTo(map);
+	
+	
 	var baseMaps = {
 		"Carte" : carte,
-		"Orthophoto" : ortho
+		"Orthophoto" : ortho,
+		"Scan-Express" : scanExpress,
+		"Cassini": cassini
 	} ;
-	var overlayMaps = {} ;
-	
+	var overlayMaps = {
+		
+	} ;
 	L.control.layers(baseMaps, overlayMaps).addTo(map);
 });
 
