@@ -45,8 +45,23 @@ $(document).ready(function(){
 			maxZoom: 19
 		}
 	) ;
-	
 	carte.addTo(map);
+	
+	var ortho = L.tileLayer(
+		getGeoportalURL("ORTHOIMAGERY.ORTHOPHOTOS"), 
+		{
+			maxZoom: 19
+		}
+	) ;
+	ortho.addTo(map);
+	
+	var baseMaps = {
+		"Carte" : carte,
+		"Orthophoto" : ortho
+	} ;
+	var overlayMaps = {} ;
+	
+	L.control.layers(baseMaps, overlayMaps).addTo(map);
 });
 
 </script>
